@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Not used */
+.menu { }
+.menuClosed { }
+.menuOpen { }
+.menuItem { }
+.navTitle { }
+.greeting { }
+.languages { }
+.attributes { }
+.hobbies { }
+.socials { }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;;
+}
+
+header {
+  width: 100vw;
+  height: 35rem;
+  background-color: #D5DEEF;
+}
+
+.navbar {
+  display: none;
+}
+
+.heroSection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 50px;
+}
+
+.heroSeciton .content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.heroSection .content .intro {
+  display: flex;
+  flex-direction: column;
+  font-size: 46px;
+  align-items: center;
+}
+
+.heroSection .content .intro .status {
+  height: 47.5px;
+  font-size: 24px;
+}
+
+.heroSection .content .actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+}
+
+.heroSection .content .actions .button {
+  display: inline-block;
+  background-color: #8AAEE0;
+  border: 0;
+  border-radius: 100px;
+  color: white;
+  cursor: pointer;
+  padding: 7px 20px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  transition: all 250ms;
+}
+
+.heroSection .content .actions .button:active {
+  box-shadow: rgba(37, 115, 240, 0.35) 0 -25px 18px -14px inset,
+              rgba(177, 201, 239,.25) 0 1px 2px, 
+              rgba(177, 201, 239,.25) 0 2px 4px,
+              rgba(177, 201, 239,.25) 0 4px 8px,
+              rgba(177, 201, 239,.25) 0 8px 16px,
+              rgba(177, 201, 239,.25) 0 16px 32px;
+  transform: scale(1.05) rotate(-1deg);
+}
+
+.heroSection .images {
+  width: 250px;
+  height: 250px;
+  z-index: 0;
+}
+
+.heroSection .images .profileImage {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border: 5px white solid;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+  overflow: hidden;
+  object-fit: cover;
+  object-position: 0 -120px;
+}
+
+.heroSection .images .universityLog {
+  position: relative;
+  top: 180px;
+  left: 170px;
+  width: 70px;
+  height: 70px;
+  border: 2px white solid;
+  border-radius: 50%;
+  box-sizing: border-box;
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+  overflow: hidden;
+  object-fit: cover;
+  object-position: 0 -1px;
+}
+
+.about {
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
+  background-color: ghostwhite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about .aboutTitle {
+  padding: 1.5rem 0;
+}
+
+.about .content {
+  width: 80vw;
+  text-align: center;
+}
+
+.about .aside {
+  padding-top: 1.5rem;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.about .aside ul {
+  list-style: none;
+}
+
+.about .aside ul .skillLvl {
+  font-style: italic;
+  font-size: small;
+}
+
+@media only screen and (min-width: 768px) {
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Clean later */
+  header .navbar {
+    display: block;
+    width: 100%;
+    height: 17%;
+    box-shadow: 0px 1px 15px whitesmoke;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(5.1px);
+    -webkit-backdrop-filter: blur(5.1px);
+  }
+  
+  header .navbar .navlinks {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .navbar .navlinks li {
+    position: relative;
+    display: inline-block;
+    font-size: 20px;
+  }
+  
+  .navbar .navlinks li:after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #FFF;
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+  }
+  
+  .navbar .navlinks li:after {
+    bottom: 0;
+    transform: translateY(0);
+  }
+  
+  .navbar .navlinks li:hover:after {
+    opacity: 1;
+    transform: translateY(5px);
+  }
+  
+  header .heroSection {
+    height: 83%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  header .contentSection {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  
+  header .contentSection .introSection {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 56px;
+  }
+  
+  header .contentSection .introSection .statusSection {
+    height: 47.5px;
+    font-size: 32px;
+  }
+  
+  header .contentSection .buttonSection {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  
+  header .contentSection .buttonSection .buttons {
+    display: inline-block;
+    background-color: #8AAEE0;
+    border: 0;
+    border-radius: 100px;
+    color: white;
+    cursor: pointer;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    user-select: none;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    transition: all 250ms;
+  }
+  
+  .buttons:hover {
+    box-shadow: rgba(37, 115, 240, 0.35) 0 -25px 18px -14px inset,
+                rgba(177, 201, 239,.25) 0 1px 2px, 
+                rgba(177, 201, 239,.25) 0 2px 4px,
+                rgba(177, 201, 239,.25) 0 4px 8px,
+                rgba(177, 201, 239,.25) 0 8px 16px,
+                rgba(177, 201, 239,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
+  
+  .imageContainer {
+    width: 250px;
+    height: 250px;
+    -webkit-transition-property: all; 
+    -webkit-transition-duration: 1s; 
+    -webkit-transition-timing-function: ease;
+  }
+  
+  .imageContainer:hover {
+    transform: scale(1.1);
+  }
+  
+  .profile {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border: 5px white solid;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    overflow: hidden;
+    object-fit: cover;
+    object-position: 0 -120px;
+  }
+  
+  .universityLog {
+    position: relative;
+    top: 180px;
+    left: 170px;
+    width: 70px;
+    height: 70px;
+    border: 2px white solid;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    overflow: hidden;
+    object-fit: cover;
+    object-position: 0 -1px;
+  }
+}
