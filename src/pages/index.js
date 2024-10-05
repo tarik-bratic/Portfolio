@@ -126,7 +126,45 @@ const App = () => {
         </section>
         <section id="career" className={appStyles.career}>
           <section className={appStyles.experties}>
-            <h2>Experties</h2>
+            <h2 className={appStyles.expertiesTitle}>Experties</h2>
+            <ul className={appStyles.expertiesGrid}>
+                <li className={appStyles.grids}>
+                  <div className={appStyles.gridTitle}>HTML</div>
+                  <code>
+                    <span>div</span>
+                  </code>
+                </li>
+                <li className={appStyles.grids}>
+                  <div className={appStyles.gridTitle}>CSS</div>
+                  <code>
+                    <span>div</span>
+                  </code>
+                </li>
+                <li className={appStyles.grids}>
+                  <div className={appStyles.gridTitle}>JavaScript</div>
+                  <code>
+                    <span>div</span>
+                  </code>
+                </li>
+                <li className={appStyles.grids}>
+                  <div className={appStyles.gridTitle}>Node.js</div>
+                  <code>
+                    <span>div</span>
+                  </code>
+                </li>
+                <li className={appStyles.grids}>
+                  <div className={appStyles.gridTitle}>React</div>
+                  <code>
+                    <span>div</span>
+                  </code>
+                </li>
+                <li className={appStyles.grids}>
+                  <div className={appStyles.gridTitle}>MySQL</div>
+                  <code>
+                    <span>div</span>
+                  </code>
+                </li>
+              </ul>
           </section>
           <section className={appStyles.projects}>
             <h2>Projects</h2>
