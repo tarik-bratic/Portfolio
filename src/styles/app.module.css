@@ -175,18 +175,59 @@ header {
 .experties .expertiesGrid {
   display: grid;
   gap: 20px;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
   list-style: none;
   padding-bottom: 1.5rem;
 }
 
+/* Grids that should not show on mobile */
+.experties .expertiesGrid #html, #css, #node, #react {
+  display: none;
+}
+
 .experties .expertiesGrid .grids {
   color: white;
-  background: black;
+  background: lightslategray;
   border-radius: 7.5px;
-  width: 10rem;
-  height: 5rem;
+  box-shadow: #D5DEEF 11px 10px 20px 0px;
+  padding: 10px;
+  display: flex;
+  width: 17.5rem;
+  flex-direction: column;
+}
+
+.experties .expertiesGrid .grids .gridTitle { 
+  border-bottom: white 1px solid;
+  width: 80%;
+  padding-bottom: 4px;
+}
+
+.experties .expertiesGrid .grids code { 
+  padding-top: 5px;
+}
+
+.experties .otherExperties {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.experties .otherExperties .othersList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.experties .otherExperties .othersList .others {
+  color: white;
+  background: lightslategray;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 @media only screen and (min-width: 768px) {

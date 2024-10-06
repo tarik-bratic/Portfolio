@@ -128,43 +128,99 @@ const App = () => {
           <section className={appStyles.experties}>
             <h2 className={appStyles.expertiesTitle}>Experties</h2>
             <ul className={appStyles.expertiesGrid}>
-                <li className={appStyles.grids}>
-                  <div className={appStyles.gridTitle}>HTML</div>
+                <li className={appStyles.grids}
+                    id={appStyles.htmlCss}>
+                  <div className={appStyles.gridTitle}>HTML / CSS</div>
                   <code>
-                    <span>div</span>
+                    <span>{'<div'}</span>
+                    <span>{' class'}</span>
+                    <span>{'='}</span>
+                    <span>{'"experties"'}</span>
+                    <span>{'></div>'}</span>
                   </code>
                 </li>
-                <li className={appStyles.grids}>
+                <li className={appStyles.grids}
+                    id={appStyles.html}>
+                  <div className={appStyles.gridTitle}>HTML</div>
+                  <code>
+                    <span>{'<div'}</span>
+                    <span>{' class'}</span>
+                    <span>{'='}</span>
+                    <span>{'"experties"'}</span>
+                    <span>{'></div>'}</span>
+                  </code>
+                </li>
+                <li className={appStyles.grids}
+                    id={appStyles.css}>
                   <div className={appStyles.gridTitle}>CSS</div>
                   <code>
                     <span>div</span>
                   </code>
                 </li>
-                <li className={appStyles.grids}>
+                <li className={appStyles.grids}
+                    id={appStyles.js}>
                   <div className={appStyles.gridTitle}>JavaScript</div>
                   <code>
-                    <span>div</span>
+                  <code>
+                    <span>{'const experties[] '}</span>
+                    <span>{'= '}</span>
+                    <span>{'["HTML", "CSS", "JavaScript", ...others];'}</span>
+                  </code>
                   </code>
                 </li>
-                <li className={appStyles.grids}>
+                <li className={appStyles.grids}
+                    id={appStyles.node}>
                   <div className={appStyles.gridTitle}>Node.js</div>
                   <code>
                     <span>div</span>
                   </code>
                 </li>
-                <li className={appStyles.grids}>
+                <li className={appStyles.grids}
+                    id={appStyles.react}>
                   <div className={appStyles.gridTitle}>React</div>
                   <code>
                     <span>div</span>
                   </code>
                 </li>
-                <li className={appStyles.grids}>
+                <li className={appStyles.grids}
+                    id={appStyles.sql}>
                   <div className={appStyles.gridTitle}>MySQL</div>
                   <code>
-                    <span>div</span>
+                    <span>{'const Tarik'}</span>
+                    <span>{' = '}</span>
+                    <span>{'await '}</span>
+                    <span>{'Experties'}</span>
+                    <span>{'.'}</span>
+                    <span>{'find()'}</span>
                   </code>
                 </li>
               </ul>
+            <section className={appStyles.otherExperties}>
+              <h3 className={appStyles.otherTitel}>Other Experties</h3>
+              <div className={appStyles.othersList}>
+                <div className={appStyles.others}>
+                  <span>React</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>Node.js</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>Bootstrap</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>MongoDB</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>Java</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>C</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>C#</span>
+                </div>
+              </div>
+            </section>
           </section>
           <section className={appStyles.projects}>
             <h2>Projects</h2>
