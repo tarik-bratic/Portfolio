@@ -4,12 +4,12 @@ import Typed from "typed.js";
 import ProfilePic from "../images/myself.jpeg";
 import UniLogo from "../images/kth.png";
 
-import * as appStyles from "../styles/app.module.css"
+import * as appStyles from "../styles/app.module.css";
 
 const App = () => {
-  // Create reference to store the DOM element containing the animation
   const statusContent = useRef(null);
 
+  // Typed effect
   useEffect(() => {
     const typed = new Typed(statusContent.current, {
       strings: ['B.Sc. Comp. Eng.', 'Full-stack Developer'],
@@ -20,76 +20,69 @@ const App = () => {
     });
 
     return () => {
-      // Destroy Typed instance during cleanup to stop animation
       typed.destroy();
     };
   }, []);
 
-  const [menuOpen, setMenuOpen] = useState(false);
+  const email = "tarik.bratic@gmx.com";
+  const [buttonText, setButtonText] = useState("E-mail");
 
-  const toggleMenu = () => { 
-    setMenuOpen(!menuOpen); 
-  }
+  const handleConnect = () => {
+    navigator.clipboard.writeText(email)
+      .then(() => {
+        setButtonText("Copied!");
+        setTimeout(() => {
+          setButtonText("E-mail");
+        }, 2000);
+      })
+      .catch((err) => {
+        console.err('Could not copy email: ', err);
+      });
 
-  const scrollIntoSection = (id) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-    }
+    console.log(email);
   }
 
   return (
     <>
       <header>
-        {/* Navigation bar, compatible for mobile and desktop */}
-        <nav className={`${appStyles.navbar} ${!menuOpen ? appStyles.menuClosed : ''}`}>
-          {/* Only displayed on mobile */}
-          <h1 className={appStyles.navTitle}>Tarik Bratic</h1>
-          <svg onClick={toggleMenu} xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 40 50">
-            <path d="M 5 8 A 2.0002 2.0002 0 1 0 5 12 L 45 12 A 2.0002 2.0002 0 1 0 45 8 L 5 8 z M 5 23 A 2.0002 2.0002 0 1 0 5 27 L 45 27 A 2.0002 2.0002 0 1 0 45 23 L 5 23 z M 5 38 A 2.0002 2.0002 0 1 0 5 42 L 45 42 A 2.0002 2.0002 0 1 0 45 38 L 5 38 z"></path>
-          </svg>
-          {/* Displayed both devices */}
-          <ul className={`${appStyles.menu} ${menuOpen ? appStyles.menuOpen : ''}`}>
-            <li className={appStyles.menuItem} onClick={() => scrollIntoSection('home')}>Home</li>
-            <li className={appStyles.menuItem} onClick={() => scrollIntoSection('about')}>About Me</li>
-            <li className={appStyles.menuItem} onClick={() => scrollIntoSection('career')}>Career</li>
-          </ul>
-        </nav>
         <section id="home" className={appStyles.heroSection}>
           <section className={appStyles.content}>
-            {/* Text window. My name and status. */}
+            {/* Text window. My name and current status. */}
             <div className={appStyles.intro}>
               <span className={appStyles.greeting}>Hello, I'm Tarik</span>
               <span className={appStyles.status} ref={statusContent}></span>
             </div>
-            {/* Buttons CV and Connect */}
+            {/* Buttons CV and E-mail */}
             <div className={appStyles.actions}>
-              <button className={appStyles.button} type="button">Resume</button>
-              <button className={appStyles.button} type="button">Connect</button>
+              <a href="/resume.pdf" download={"resume.pdf"}>
+                <button className={appStyles.button} type="button">Resume</button>
+              </a>
+              <button 
+                className={appStyles.button} 
+                type="button" 
+                onClick={handleConnect}>
+                  {buttonText}
+              </button>
             </div>
           </section>
           {/* Img of myself and uni logo */}
           <div className={appStyles.images}>
-            <img className={appStyles.profileImage} src={ProfilePic} alt="Profile picture of Tarik" />
-            <img className={appStyles.universityLog} src={UniLogo} alt="University Logo" />
+            <img 
+              className={appStyles.profileImage} 
+              src={ProfilePic} 
+              alt="Profile picture of Tarik" />
+            <img 
+              className={appStyles.universityLog} 
+              src={UniLogo} 
+              alt="University Logo" />
           </div>
         </section>
       </header>
       <main>
-        <section id="about" className={appStyles.about}>
+        <section className={appStyles.about}>
           <h2 className={appStyles.aboutTitle}>About Me</h2>
           <article className={appStyles.content}>
-            <p>En student inom datateknik på KTH med passion för allt IT-
-              relaterat. Engagemanget sträcker sig bortom klassrummet;
-              systemutveckling är min stora hobby. Mina andra intressen är
-              styrketräning, film, bilar och att umgås med mina vänner. Som
-              fritidsprojekt har jag kodat på Raspberry PI, skapat rörliga
-              hemsidor med JavaScript, och videoredigerat klipp för YouTube.
-              Jag är någon som är ödmjuk och villig att lära sig; som kassör på
-              Filmstaden har jag lärt mig vara kommunikativ och social; som
-              lagermedarbetare på Hydroscand har jag lärt mig vara
-              organiserad och detaljorienterad; som butiksmedarbetare har
-              jag lärt mig kundservice, lagerhantering och effektiv logistik.
+            <p>A student in computer engineering at KTH with a passion for everything related to IT. My engagement extends beyond the classroom; system development is my main hobby. My other interests include strength training, movies, cars, and spending time with my friends. As personal projects, I have coded on a Raspberry Pi, created interactive websites using JavaScript, and edited videos for YouTube. I am someone who is humble and eager to learn; as a cashier at Filmstaden, I have learned to be communicative and social; as a warehouse worker at Hydroscand, I have developed organizational skills and attention to detail; and as a retail employee, I have gained experience in customer service, inventory management, and efficient logistics.
             </p>
           </article>
           <aside className={appStyles.aside}>
@@ -114,7 +107,7 @@ const App = () => {
               <h3>Hobbies</h3>
               <li>Gym</li>
               <li>Motorsport</li>
-              <li>Fotball</li>
+              <li>Football</li>
             </ul>
             <ul className={appStyles.socials}>
               <h3>Socials</h3>
@@ -124,7 +117,7 @@ const App = () => {
             </ul>
           </aside>
         </section>
-        <section id="career" className={appStyles.career}>
+        <section className={appStyles.career}>
           <section className={appStyles.experties}>
             <h2 className={appStyles.expertiesTitle}>Experties</h2>
             <ul className={appStyles.expertiesGrid}>
@@ -132,11 +125,11 @@ const App = () => {
                     id={appStyles.htmlCss}>
                   <div className={appStyles.gridTitle}>HTML / CSS</div>
                   <code>
-                    <span>{'<div'}</span>
-                    <span>{' class'}</span>
+                    <span className={appStyles.Yellow}>{'<div'}</span>
+                    <span className={appStyles.lightYellow}>{' class'}</span>
                     <span>{'='}</span>
-                    <span>{'"experties"'}</span>
-                    <span>{'></div>'}</span>
+                    <span className={appStyles.green}>{'"experties"'}</span>
+                    <span className={appStyles.Yellow}>{'></div>'}</span>
                   </code>
                 </li>
                 <li className={appStyles.grids}

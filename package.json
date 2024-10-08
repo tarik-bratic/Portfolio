@@ -15,10 +15,16 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.8",
+    "dotenv": "^16.4.5",
     "gatsby": "^5.13.3",
+    "graphql": "^16.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "typed.js": "^2.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
