@@ -1,49 +1,55 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal Starter
-</h1>
+# 💼 Tarik Bratic — Personal Portfolio
 
-## 🚀 Quick start
+Welcome to my personal developer portfolio! This project serves as a digital introduction to who I am — a passionate Computer Engineering student at KTH Royal Institute of Technology with a deep love for full-stack development, technology, and creative problem-solving.
 
-1.  **Create a Gatsby site.**
+## 🚀 Features
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+- ✨ Dynamic typing effect showcasing my current roles
+- 📄 Resume download and easy contact via clipboard email copy
+- 👨‍💻 “About Me” section detailing my background, hobbies, and soft skills
+- 💬 GitHub Pinned Repositories via GitHub GraphQL API
+- 📊 GitHub contribution calendar (filtered to recent activity)
+- 💡 Interactive tech stack section with highlighted programming languages and tools
+- 🖼️ Personal photo and university branding for a touch of identity
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+## 🛠️ Tech Stack
 
-2.  **Start developing.**
+This portfolio is built with the following technologies:
 
-    Navigate into your new site’s directory and start it up.
+- **React.js** — UI framework
+- **Gatsby** — Static site generator
+- **Typed.js** — Typing animation
+- **GraphQL + Octokit** — Fetching GitHub repositories
+- **react-github-calendar** — Contribution visualization
+- **CSS Modules** — Custom styles and layout
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## 📂 Project Structure
 
-3.  **Open the code and start customizing!**
+- `src/`
+  - `components/` – Reusable React components
+  - `styles/` – CSS Modules for scoped styling
+  - `images/` – Personal and branding assets
+  - `index.js` – Main app structure and logic
 
-    Your site is now running at http://localhost:8000!
+## 📚 About Me
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+I'm currently studying Computer Engineering at **KTH Royal Institute of Technology**. Outside of academics, I spend my time building apps, writing clean code, and exploring technologies like React, Node.js, and databases. My hobbies include working out, motorsport, football, and hanging out with friends.
 
-4.  **Learn more**
+Check out my pinned repositories for a sample of my personal projects!
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+## 🧠 Skills
 
-## 🚀 Quick start (Netlify)
+**Frontend**: HTML, CSS, JavaScript, React, TypeScript, Bootstrap  
+**Backend**: Node.js, REST APIs, MongoDB, MySQL  
+**Other Tools**: C, C#, Java, Swift, Kotlin, nginx  
+**Soft Skills**: Teamwork, communication, creativity, detail-orientation
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+## 🔗 Connect With Me
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal)
+- [LinkedIn](https://www.linkedin.com/in/tarikbratic/)
+- [GitHub](https://github.com/tarik-bratic)
+- 📬 tarik.bratic@gmx.com
+
+## 📄 License
+
+This project is open source and free to use. © 2024 Tarik Bratic
