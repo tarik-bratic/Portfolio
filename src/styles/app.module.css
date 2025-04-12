@@ -223,9 +223,11 @@ header {
     display: flex;
     flex-direction: column;
     min-height: 450px;
+    gap: 30px;
     justify-content: space-evenly;
     background-color: ghostwhite;
     margin-top: 15px;
+    padding: 35px 0;
 }
 
 .projects {
@@ -247,7 +249,7 @@ header {
 .repoCard {
   min-width: 300px;
   display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
 }

@@ -64,6 +64,9 @@ const App = () => {
     });
   };
 
+  // Fetch GitHub Repositories using REST API
+  const [repositories, setRepositories] = useState([]);
+
   useEffect(() => {
     const fetchGitHubScopes = async () => {
       const TOKEN = process.env.GATSBY_GITHUB_TOKEN;
@@ -79,7 +82,7 @@ const App = () => {
         const response = await octokit.graphql(
           `query ($login: String!) {
             user(login: $login) {
-              pinnedItems(first: 2, types: [REPOSITORY]) {
+              pinnedItems(first: 5, types: [REPOSITORY]) {
                 edges {
                   node {
                     ... on Repository {
