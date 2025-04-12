@@ -173,12 +173,14 @@ const App = () => {
        */}
       <main>
         <section className={appStyles.about}>
-          <h2 className={appStyles.aboutTitle}>About Me</h2>
-          <article className={appStyles.content}>
-            <p>
-              A student in computer engineering at KTH with a passion for everything related to IT. My engagement extends beyond the classroom; system development is my main hobby. My other interests include strength training, movies, cars, and spending time with my friends. As personal projects, I have coded on a Raspberry Pi, created interactive websites using JavaScript, and edited videos for YouTube. I am someone who is humble and eager to learn; as a cashier at Filmstaden, I have learned to be communicative and social; as a warehouse worker at Hydroscand, I have developed organizational skills and attention to detail; and as a retail employee, I have gained experience in customer service, inventory management, and efficient logistics.
-            </p>
-          </article>
+          <div className={appStyles.aboutContainer}>
+            <h2 className={appStyles.aboutTitle}>About Me</h2>
+            <article className={appStyles.content}>
+              <p>
+                A student in computer engineering at KTH with a passion for everything related to IT. My engagement extends beyond the classroom; system development is my main hobby. My other interests include strength training, movies, cars, and spending time with my friends. As personal projects, I have coded on a Raspberry Pi, created interactive websites using JavaScript, and edited videos for YouTube. I am someone who is humble and eager to learn; as a cashier at Filmstaden, I have learned to be communicative and social; as a warehouse worker at Hydroscand, I have developed organizational skills and attention to detail; and as a retail employee, I have gained experience in customer service, inventory management, and efficient logistics.
+              </p>
+            </article>
+          </div>
           <aside className={appStyles.aside}>
             <ul className={appStyles.languages}>
               <h3>Languages</h3>
@@ -212,8 +214,9 @@ const App = () => {
         </section>
         <section className={appStyles.career}>
           <section className={appStyles.experties}>
+            <div className={appStyles.expertiesContainer}>
             <h2 className={appStyles.expertiesTitle}>Experties</h2>
-            <ul className={appStyles.expertiesGrid}>
+              <ul className={appStyles.expertiesGrid}>
                 <li className={appStyles.grids}
                     id={appStyles.htmlCss}>
                   <div className={appStyles.gridTitle}>HTML / CSS</div>
@@ -281,6 +284,7 @@ const App = () => {
                   </code>
                 </li>
               </ul>
+            </div>
             <section className={appStyles.otherExperties}>
               <h3 className={appStyles.otherTitel}>Other Experties</h3>
               <div className={appStyles.othersList}>
