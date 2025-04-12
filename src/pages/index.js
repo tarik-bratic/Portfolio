@@ -139,7 +139,7 @@ const App = () => {
             </div>
             {/* Buttons CV and E-mail */}
             <div className={appStyles.actions}>
-              <a href="Resume.pdf" download>
+              <a href="src/resources/Resume.pdf" download={"src/resources/Resume.pdf"}>
                 <button className={appStyles.button} type="button">Resume</button>
               </a>
               <button 
