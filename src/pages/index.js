@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Octokit } from "@octokit/core";
-import { createTokenAuth } from "@octokit/auth-token";
 import Typed from "typed.js";
 import GitHubCalendar from "react-github-calendar";
 
@@ -44,9 +43,7 @@ const App = () => {
       });
   }
 
-  // Fetch GitHub Scopes
-  const [repos, setRepos] = useState([]);
-
+  // GitHub Contributions
   const selectLastHalfYear = contributions => {
     const currentYear = new Date().getFullYear();
     const currentMonth = new Date().getMonth();
@@ -64,9 +61,10 @@ const App = () => {
     });
   };
 
-  // Fetch GitHub Repositories using REST API
-  const [repositories, setRepositories] = useState([]);
+  // Fetch GitHub Scopes
+  const [repos, setRepos] = useState([]);
 
+  // Github Repositories
   useEffect(() => {
     const fetchGitHubScopes = async () => {
       const TOKEN = process.env.GATSBY_GITHUB_TOKEN;
@@ -141,7 +139,7 @@ const App = () => {
             </div>
             {/* Buttons CV and E-mail */}
             <div className={appStyles.actions}>
-              <a href="/resume.pdf" download={"resume.pdf"}>
+              <a href="Resume.pdf" download>
                 <button className={appStyles.button} type="button">Resume</button>
               </a>
               <button 
@@ -207,9 +205,8 @@ const App = () => {
             </ul>
             <ul className={appStyles.socials}>
               <h3>Socials</h3>
-              <li>LinkedIn</li>
-              <li>Github</li>
-              <li>Discord</li>
+              <li><a href="https://www.linkedin.com/in/tarikbratic/">LinkedIn</a></li>
+              <li><a href="https://github.com/tarik-bratic">Github</a></li>
             </ul>
           </aside>
         </section>
@@ -308,37 +305,52 @@ const App = () => {
                 <div className={appStyles.others}>
                   <span>C#</span>
                 </div>
+                <div className={appStyles.others}>
+                  <span>Swift</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>Kotlin</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>REST API</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>TypeScript</span>
+                </div>
+                <div className={appStyles.others}>
+                  <span>nginx</span>
+                </div>
               </div>
             </section>
           </section>
-          <section className={appStyles.work}>
-          <section className={appStyles.projects}>
-            <h2 className={appStyles.projectTitle}>Repositorys</h2>
-            <ul className={appStyles.repos}>
-              {repos.length > 0 ? (
-                repos.map(repo => (
-                  <div className={appStyles.repoCard} key={repo.id}>
-                    <h2><a href={repo.url}>{repo.name}</a></h2>
-                    <div className={appStyles.repoDesc}>
-                      <p>{repo.description}</p>
-                      <p>{repo.languages.join(', ')}</p>
+          <section className={appStyles.codeSection}>
+            <section className={appStyles.repoSection}>
+              <h2 className={appStyles.repoTitle}>Repositories</h2>
+              <ul className={appStyles.repoList}>
+                {repos.length > 0 ? (
+                  repos.map(repo => (
+                    <div className={appStyles.repoCard} key={repo.id}>
+                      <h2><a href={repo.url}>{repo.name}</a></h2>
+                      <div className={appStyles.repoDescription}>
+                        <p>{repo.description}</p>
+                        <p>{repo.languages.join(', ')}</p>
+                      </div>
                     </div>
-                  </div>
-                ))
-              ) : (
-                <p>Loading repos....</p>
-              )}
-            </ul>
-          </section>
-          <section className={appStyles.github}>
-            <h2>GitHub Contributions</h2>
-            <GitHubCalendar 
-              username="tarik-bratic"
-              transformData={selectLastHalfYear}  
-              hideColorLegend
-              hideTotalCount
-            />
-          </section>
+                  ))
+                ) : (
+                  <p>Loading repos....</p>
+                )}
+              </ul>
+            </section>
+            <section className={appStyles.gitHubCal}>
+              <h2>GitHub Contributions</h2>
+              <GitHubCalendar 
+                username="tarik-bratic"
+                transformData={selectLastHalfYear}  
+                hideColorLegend
+                hideTotalCount
+              />
+            </section>
           </section>
         </section>
       </main>
