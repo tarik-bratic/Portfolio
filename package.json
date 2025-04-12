@@ -16,11 +16,14 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
+    "@octokit/auth-token": "^5.1.1",
+    "@octokit/core": "^6.1.2",
     "dotenv": "^16.4.5",
     "gatsby": "^5.13.3",
     "graphql": "^16.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-github-calendar": "^4.5.1",
     "react-helmet": "^6.1.0",
     "typed.js": "^2.1.0"
   },

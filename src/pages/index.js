@@ -1,17 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Octokit } from "@octokit/core";
+import { createTokenAuth } from "@octokit/auth-token";
 import Typed from "typed.js";
+import GitHubCalendar from "react-github-calendar";
 
-import ProfilePic from "../images/myself.jpeg";
 import UniLogo from "../images/kth.png";
+import ProfilePic from "../images/myself.jpeg";
 
 import * as appStyles from "../styles/app.module.css";
 
 const App = () => {
-  const statusContent = useRef(null);
-
-  // Typed effect
+  // Typing effect
+  const profsContent = useRef(null);
+  
   useEffect(() => {
-    const typed = new Typed(statusContent.current, {
+    const typed = new Typed(profsContent.current, {
       strings: ['B.Sc. Comp. Eng.', 'Full-stack Developer'],
       typeSpeed: 50,
       backSpeed: 50,
@@ -24,6 +27,7 @@ const App = () => {
     };
   }, []);
 
+  // E-mail handler
   const email = "tarik.bratic@gmx.com";
   const [buttonText, setButtonText] = useState("E-mail");
 
@@ -38,19 +42,99 @@ const App = () => {
       .catch((err) => {
         console.err('Could not copy email: ', err);
       });
-
-    console.log(email);
   }
+
+  // Fetch GitHub Scopes
+  const [repos, setRepos] = useState([]);
+
+  const selectLastHalfYear = contributions => {
+    const currentYear = new Date().getFullYear();
+    const currentMonth = new Date().getMonth();
+    const shownMonths = 6;
+  
+    return contributions.filter(activity => {
+      const date = new Date(activity.date);
+      const monthOfDay = date.getMonth();
+  
+      return (
+        date.getFullYear() === currentYear &&
+        monthOfDay > currentMonth - shownMonths &&
+        monthOfDay <= currentMonth
+      );
+    });
+  };
+
+  useEffect(() => {
+    const fetchGitHubScopes = async () => {
+      const TOKEN = process.env.GATSBY_GITHUB_TOKEN;
+  
+      if (!TOKEN) {
+        console.error("GitHub token is missing! Check your .env.development file.");
+        return;
+      }
+  
+      try {
+        const octokit = new Octokit({ auth: TOKEN });
+  
+        const response = await octokit.graphql(
+          `query ($login: String!) {
+            user(login: $login) {
+              pinnedItems(first: 2, types: [REPOSITORY]) {
+                edges {
+                  node {
+                    ... on Repository {
+                      id
+                      name
+                      url
+                      description
+                      languages(first: 5) {
+                        edges {
+                          node {
+                            name
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }`,
+          { login: "tarik-bratic" }
+        );
+  
+        const repositories = response.user.pinnedItems.edges.map(edge => ({
+          id: edge.node.id,
+          name: edge.node.name,
+          url: edge.node.url,
+          description: edge.node.description,
+          languages: edge.node.languages.edges.map(lang => lang.node.name),
+        }));
+  
+        setRepos(repositories);
+  
+      } catch (error) {
+        console.error("Error fetching repositories:", error);
+      }
+    };
+  
+    fetchGitHubScopes();
+  }, []);
 
   return (
     <>
+      {/**
+       * Information regarding name and current profession.
+       * Interactive content with buttons to show CV and copy E-mail.
+       * Images of Tarik (myself) and university logo.
+       */}
       <header>
-        <section id="home" className={appStyles.heroSection}>
+        <section className={appStyles.heroSection}>
           <section className={appStyles.content}>
             {/* Text window. My name and current status. */}
             <div className={appStyles.intro}>
               <span className={appStyles.greeting}>Hello, I'm Tarik</span>
-              <span className={appStyles.status} ref={statusContent}></span>
+              <span className={appStyles.profession} ref={profsContent}></span>
             </div>
             {/* Buttons CV and E-mail */}
             <div className={appStyles.actions}>
@@ -78,11 +162,20 @@ const App = () => {
           </div>
         </section>
       </header>
+      {/**
+       * Four layers of content; About me, Experties, Github Project, Github Activites.
+       * About me: A paragraph about my background and other skills such as language, skills...
+       * Experties: Displaing a grid-view of what programing languages I know.
+       * (Other experties): Sub layer of same concept.
+       * Github Project: Useing API to display my pinned projects from Github.
+       * Github Activites: Useing API to display recent activites in my Github.
+       */}
       <main>
         <section className={appStyles.about}>
           <h2 className={appStyles.aboutTitle}>About Me</h2>
           <article className={appStyles.content}>
-            <p>A student in computer engineering at KTH with a passion for everything related to IT. My engagement extends beyond the classroom; system development is my main hobby. My other interests include strength training, movies, cars, and spending time with my friends. As personal projects, I have coded on a Raspberry Pi, created interactive websites using JavaScript, and edited videos for YouTube. I am someone who is humble and eager to learn; as a cashier at Filmstaden, I have learned to be communicative and social; as a warehouse worker at Hydroscand, I have developed organizational skills and attention to detail; and as a retail employee, I have gained experience in customer service, inventory management, and efficient logistics.
+            <p>
+              A student in computer engineering at KTH with a passion for everything related to IT. My engagement extends beyond the classroom; system development is my main hobby. My other interests include strength training, movies, cars, and spending time with my friends. As personal projects, I have coded on a Raspberry Pi, created interactive websites using JavaScript, and edited videos for YouTube. I am someone who is humble and eager to learn; as a cashier at Filmstaden, I have learned to be communicative and social; as a warehouse worker at Hydroscand, I have developed organizational skills and attention to detail; and as a retail employee, I have gained experience in customer service, inventory management, and efficient logistics.
             </p>
           </article>
           <aside className={appStyles.aside}>
@@ -155,9 +248,9 @@ const App = () => {
                   <div className={appStyles.gridTitle}>JavaScript</div>
                   <code>
                   <code>
-                    <span>{'const experties[] '}</span>
+                    <span className={appStyles.green}>{'const experties[] '}</span>
                     <span>{'= '}</span>
-                    <span>{'["HTML", "CSS", "JavaScript", ...others];'}</span>
+                    <span className={appStyles.lightYellow}>{'["HTML", "CSS", "JavaScript", ...others];'}</span>
                   </code>
                   </code>
                 </li>
@@ -179,12 +272,12 @@ const App = () => {
                     id={appStyles.sql}>
                   <div className={appStyles.gridTitle}>MySQL</div>
                   <code>
-                    <span>{'const Tarik'}</span>
+                    <span className={appStyles.blue}>{'const Tarik'}</span>
                     <span>{' = '}</span>
-                    <span>{'await '}</span>
-                    <span>{'Experties'}</span>
+                    <span className={appStyles.purple}>{'await '}</span>
+                    <span className={appStyles.green}>{'Experties'}</span>
                     <span>{'.'}</span>
-                    <span>{'find()'}</span>
+                    <span className={appStyles.Yellow}>{'find()'}</span>
                   </code>
                 </li>
               </ul>
@@ -215,14 +308,40 @@ const App = () => {
               </div>
             </section>
           </section>
+          <section className={appStyles.work}>
           <section className={appStyles.projects}>
-            <h2>Projects</h2>
+            <h2 className={appStyles.projectTitle}>Repositorys</h2>
+            <ul className={appStyles.repos}>
+              {repos.length > 0 ? (
+                repos.map(repo => (
+                  <div className={appStyles.repoCard} key={repo.id}>
+                    <h2><a href={repo.url}>{repo.name}</a></h2>
+                    <div className={appStyles.repoDesc}>
+                      <p>{repo.description}</p>
+                      <p>{repo.languages.join(', ')}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p>Loading repos....</p>
+              )}
+            </ul>
           </section>
           <section className={appStyles.github}>
-            <h2>GitHub</h2>
+            <h2>GitHub Contributions</h2>
+            <GitHubCalendar 
+              username="tarik-bratic"
+              transformData={selectLastHalfYear}  
+              hideColorLegend
+              hideTotalCount
+            />
+          </section>
           </section>
         </section>
       </main>
+      {/**
+       * Copyright.
+       */}
       <footer>
         <span>Copyright © <time dateTime="2024">2024</time> Tarik Bratic</span>
       </footer>

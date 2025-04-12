@@ -6,77 +6,68 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.lightYellow{ color: #ffd21d}
-.Yellow { color: #ffd21da8}
-.c-w { color: white}
-.green { color: #74b087}
-.c-b { color: #7a99ad}
-.c-p { color: #9f8198 }
-.c-c { color: #666}
-
 html, body {
   height: 100%;
   width: 100%;;
 }
 
+/* Colors for experties */
+.lightYellow { color: #ffd21d}
+.Yellow { color: #ffd21da8}
+.c-w { color: white}
+.green { color: #74b087}
+.blue { color: #91bfdd}
+.purple { color: #e7bcdd }
+.c-c { color: #666}
+
 header {
-  width: 100vw;
   height: 35rem;
   background-color: #D5DEEF;
-}
-
-.navbar {
-  display: none;
 }
 
 .heroSection {
   height: 100%;
   display: flex;
+  row-gap: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 50px;
 }
 
 .heroSeciton .content {
   display: flex;
-  flex-direction: column;
   row-gap: 10px;
+  flex-direction: column;
 }
 
 .heroSection .content .intro {
+  font-size: 46px;
   display: flex;
   flex-direction: column;
-  font-size: 46px;
   align-items: center;
 }
 
-.heroSection .content .intro .status {
+.heroSection .content .intro .profession {
   height: 47.5px;
   font-size: 24px;
 }
 
 .heroSection .content .actions {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   gap: 50px;
+  justify-content: center;
 }
 
 .heroSection .content .actions .button {
   width: 108px;
-  display: inline-block;
+  padding: 7px 20px;
+  color: white;
   background-color: #8AAEE0;
+  font-size: 16px;
   border: 0;
   border-radius: 100px;
-  color: white;
-  cursor: pointer;
-  padding: 7px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  user-select: none;
   touch-action: manipulation;
+  user-select: none;
   -webkit-user-select: none;
   transition: all 250ms;
 }
@@ -94,13 +85,12 @@ header {
 .heroSection .images {
   width: 250px;
   height: 250px;
-  z-index: 0;
 }
 
 .heroSection .images .profileImage {
-  position: absolute;
   width: 250px;
   height: 250px;
+  position: absolute;
   border: 5px white solid;
   border-radius: 50%;
   box-sizing: border-box;
@@ -111,11 +101,11 @@ header {
 }
 
 .heroSection .images .universityLog {
+  width: 70px;
+  height: 70px;
   position: relative;
   top: 180px;
   left: 170px;
-  width: 70px;
-  height: 70px;
   border: 2px white solid;
   border-radius: 50%;
   box-sizing: border-box;
@@ -228,13 +218,69 @@ header {
   border-radius: 5px;
 }
 
+.work {
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+    justify-content: space-evenly;
+    background-color: ghostwhite;
+    margin-top: 15px;
+}
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.projects .projectTitle {
+  padding-bottom: 1.5rem;
+}
+
+.repos {
+  display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.repoCard {
+  min-width: 300px;
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.repoCard h2 a {
+  text-decoration: none;
+  color: #5c90f1;
+}
+
+.repoCard .repoDesc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.react-activity-calendar {
+  padding: 1rem
+}
+
+.github {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
 footer {
   display: flex;
   justify-content: center;
   background: #D5DEEF;
   font-weight: 600;
   padding: 1rem 0;
-  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 15px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media only screen and (min-width: 768px) {
